@@ -114,10 +114,8 @@
             // 
             // txtYeJianZhiBanTiaoXiuCiShu
             // 
-            this.txtYeJianZhiBanTiaoXiuCiShu.BackColor = System.Drawing.SystemColors.Info;
             this.txtYeJianZhiBanTiaoXiuCiShu.Location = new System.Drawing.Point(574, 78);
             this.txtYeJianZhiBanTiaoXiuCiShu.Name = "txtYeJianZhiBanTiaoXiuCiShu";
-            this.txtYeJianZhiBanTiaoXiuCiShu.ReadOnly = true;
             this.txtYeJianZhiBanTiaoXiuCiShu.Size = new System.Drawing.Size(101, 21);
             this.txtYeJianZhiBanTiaoXiuCiShu.TabIndex = 54;
             // 
@@ -132,10 +130,8 @@
             // 
             // txtYeJianZhiBanCiShu
             // 
-            this.txtYeJianZhiBanCiShu.BackColor = System.Drawing.SystemColors.Info;
             this.txtYeJianZhiBanCiShu.Location = new System.Drawing.Point(342, 78);
             this.txtYeJianZhiBanCiShu.Name = "txtYeJianZhiBanCiShu";
-            this.txtYeJianZhiBanCiShu.ReadOnly = true;
             this.txtYeJianZhiBanCiShu.Size = new System.Drawing.Size(101, 21);
             this.txtYeJianZhiBanCiShu.TabIndex = 52;
             // 
@@ -150,10 +146,8 @@
             // 
             // txtZhengChangTiaoXiu
             // 
-            this.txtZhengChangTiaoXiu.BackColor = System.Drawing.SystemColors.Info;
             this.txtZhengChangTiaoXiu.Location = new System.Drawing.Point(118, 78);
             this.txtZhengChangTiaoXiu.Name = "txtZhengChangTiaoXiu";
-            this.txtZhengChangTiaoXiu.ReadOnly = true;
             this.txtZhengChangTiaoXiu.Size = new System.Drawing.Size(101, 21);
             this.txtZhengChangTiaoXiu.TabIndex = 50;
             // 
@@ -168,10 +162,8 @@
             // 
             // txtJieJiaRiJiaBan
             // 
-            this.txtJieJiaRiJiaBan.BackColor = System.Drawing.SystemColors.Info;
             this.txtJieJiaRiJiaBan.Location = new System.Drawing.Point(574, 49);
             this.txtJieJiaRiJiaBan.Name = "txtJieJiaRiJiaBan";
-            this.txtJieJiaRiJiaBan.ReadOnly = true;
             this.txtJieJiaRiJiaBan.Size = new System.Drawing.Size(101, 21);
             this.txtJieJiaRiJiaBan.TabIndex = 48;
             // 
@@ -186,10 +178,8 @@
             // 
             // txtXiuXiRiJiaBan
             // 
-            this.txtXiuXiRiJiaBan.BackColor = System.Drawing.SystemColors.Info;
             this.txtXiuXiRiJiaBan.Location = new System.Drawing.Point(342, 49);
             this.txtXiuXiRiJiaBan.Name = "txtXiuXiRiJiaBan";
-            this.txtXiuXiRiJiaBan.ReadOnly = true;
             this.txtXiuXiRiJiaBan.Size = new System.Drawing.Size(101, 21);
             this.txtXiuXiRiJiaBan.TabIndex = 46;
             // 
@@ -204,10 +194,8 @@
             // 
             // txtGongZuoRiJiaBanCiShu
             // 
-            this.txtGongZuoRiJiaBanCiShu.BackColor = System.Drawing.SystemColors.Info;
             this.txtGongZuoRiJiaBanCiShu.Location = new System.Drawing.Point(118, 49);
             this.txtGongZuoRiJiaBanCiShu.Name = "txtGongZuoRiJiaBanCiShu";
-            this.txtGongZuoRiJiaBanCiShu.ReadOnly = true;
             this.txtGongZuoRiJiaBanCiShu.Size = new System.Drawing.Size(101, 21);
             this.txtGongZuoRiJiaBanCiShu.TabIndex = 44;
             // 

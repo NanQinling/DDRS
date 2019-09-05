@@ -17,6 +17,15 @@ namespace DDRS
         private void init_dgvKaoQin()
         {
             List<KaoQin> list = objKaoQinService.GetKaoQinByDept(Program.salaryDate.last_year_month, Program.currentAdmin.dept);
+            SetDgvKaoQinFormat(list);
+        }
+
+        /// <summary>
+        /// 设置表格显示格式
+        /// </summary>
+        /// <param name="list"></param>
+        private void SetDgvKaoQinFormat(List<KaoQin> list)
+        {
             this.dgvKaoQin.DataSource = list;
             this.dgvKaoQin.AllowUserToAddRows = false;
             this.dgvKaoQin.AllowUserToDeleteRows = false;
@@ -37,6 +46,10 @@ namespace DDRS
                 {
                     dgvKaoQin.Columns[i].Visible = false;
                 }
+                if (dgvKaoQin.Columns[i].Name == "部门")
+                {
+                    dgvKaoQin.Columns[i].Visible = false;
+                }
             }
             //调整列宽
             for (int i = 0; i < dgvKaoQin.Columns.Count; i++)
@@ -51,6 +64,7 @@ namespace DDRS
                     dgvKaoQin.Columns[i].Width = 40;
                 }
             }
+
         }
 
         /// <summary>
@@ -111,7 +125,9 @@ namespace DDRS
                 工作时长 = double.Parse(this.txtGongZuoShiChang.Text),
                 备注 = this.txtBeiZhu.Text.Trim(),
                 更改者 = Program.currentAdmin.username,
-                更改日期 = DateTime.Now
+                更改日期 = DateTime.Now,
+                IsSubmit = true
+
             };
             return objKaoQin;
         }
@@ -153,6 +169,122 @@ namespace DDRS
         {
             #region 验证表单输入数据
 
+            if (this.txtYingChuQin.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("请填入应出勤天数！", "提示");
+                return;
+            }
+            if (this.txtShiJiChuQin.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("请填入实际出勤天数！", "提示");
+                return;
+            }
+            if (this.txtChuChai.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("请填入出差天数！", "提示");
+                return;
+            }
+            if (this.txtKuangGong.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("请填入旷工天数！", "提示");
+                return;
+            }
+            if (this.txtNianJia.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("请填入年假天数！", "提示");
+                return;
+            }
+            if (this.txtShiJia.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("请填入事假天数！", "提示");
+                return;
+            }
+            if (this.txtBingJia.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("请填入病假天数！", "提示");
+                return;
+            }
+            if (this.txtZhengChangTiaoXiu.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("请填入正常调休天数！", "提示");
+                return;
+            }
+            if (this.txtChanJia.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("请填入产假天数！", "提示");
+                return;
+            }
+            if (this.txtPeiChanJia.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("请填入陪产假天数！", "提示");
+                return;
+            }
+            if (this.txtHunJian.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("请填入婚假天数！", "提示");
+                return;
+            }
+            if (this.txtSangJia.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("请填入丧假天数！", "提示");
+                return;
+            }
+            if (this.txtChiDaoZaoTuiCiShu.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("请填入迟到早退次数！", "提示");
+                return;
+            }
+            if (this.txtQueKaCiShu.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("请填入缺卡次数！", "提示");
+                return;
+            }
+            if (this.txtGongZuoRiJiaBanCiShu.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("请填入工作日加班次数！", "提示");
+                return;
+            }
+            if (this.txtXiuXiRiChuChai.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("请填入休息日加班天数！", "提示");
+                return;
+            }
+            if (this.txtJieJiaRiJiaBan.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("请填入节假日加班天数！", "提示");
+                return;
+            }
+            if (this.txtXiuXiRiChuChai.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("请填入休息日出差天数！", "提示");
+                return;
+            }
+            if (this.txtYeJianZhiBanCiShu.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("请填入夜间值班次数！", "提示");
+                return;
+            }
+            if (this.txtYeJianZhiBanTiaoXiuCiShu.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("请填入夜间值班调休次数！", "提示");
+                return;
+            }
+            if (this.txtDaKaQianDaoCiShu.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("请填入打卡签到次数！", "提示");
+                return;
+            }
+            if (this.txtGongZuoShiChang.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("请填入工作时长！", "提示");
+                return;
+            }
+            if (this.txtBeiZhu.Text.Trim().Length > 30)
+            {
+                MessageBox.Show("备注信息不能超过20个字符，请修改后重新提交！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.txtBeiZhu.Focus();
+                return;
+            }
             #endregion
 
             #region 封装对象
@@ -245,6 +377,12 @@ namespace DDRS
         private void DgvKaoQin_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             DataGridViewStyle.DgvRowPostPaint(dgvKaoQin, e);
+        }
+
+        private void BtnNotSubmit_Click(object sender, EventArgs e)
+        {
+            List<KaoQin> list = objKaoQinService.GetNotSubmitKaoQin(Program.salaryDate.last_year_month, Program.currentAdmin.dept);
+            SetDgvKaoQinFormat(list);
         }
     }
 }

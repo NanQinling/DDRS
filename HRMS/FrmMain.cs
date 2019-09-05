@@ -80,19 +80,19 @@ namespace DDRS
         //根据登录用户检测操作权限
         private void JudgmentAuthority()
         {
-            if (Program.currentAdmin.attendance == true)
+            if (Program.currentAdmin.Attendance == true)
             {
                 this.考勤管理ToolStripMenuItem.Enabled = true;
             }
-            if (Program.currentAdmin.overtime == true)
+            if (Program.currentAdmin.Overtime == true)
             {
                 this.加班管理JToolStripMenuItem.Enabled = true;
             }
-            if (Program.currentAdmin.assessment == false)
+            if (Program.currentAdmin.Assessment == false)
             {
 
             }
-            if (Program.currentAdmin.evaluation == false)
+            if (Program.currentAdmin.Evaluation == false)
             {
 
             }

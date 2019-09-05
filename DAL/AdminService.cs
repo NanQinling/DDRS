@@ -21,26 +21,31 @@ namespace DAL
         /// </summary>
         /// <param name="objAdmin"></param>
         /// <returns></returns>
-        public Admin AdminLogin(Admin objAdmin)
+        public Admin AdminLogin(Admin objAdmin, DateTime dateTime)
         {
-            string sql = "select tbl_user.id,tbl_user.deptid,org_dept.机构简称 as dept,tbl_user.UserId,emp_bas.姓名 as username,tbl_user.attendance,tbl_user.overtime,tbl_user.evaluation,tbl_user.assessment from tbl_user";
-            sql += " inner join org_dept on org_dept.机构编号 = tbl_user.deptid";
-            sql += " inner join emp_bas on emp_bas.人员编号 = tbl_user.UserId";
-            sql += " where userid={0} and pwd='{1}' and org_dept.机构简称='{2}'";
-            sql += " order by tbl_user.DeptID";
-            sql = string.Format(sql, objAdmin.userid, objAdmin.pwd, objAdmin.dept);
+            string sql = "select id,deptid,dept,UserId,username,attendance,overtime,evaluation,assessment,开始日期,结束日期,备注,更改者,更改日期 from tbl_user";
+            sql += " where userid='{0}' and pwd='{1}' and dept='{2}' and '{3}' between 开始日期 and 结束日期";
+            sql += " order by DeptID";
+            sql = string.Format(sql, objAdmin.userid, objAdmin.pwd, objAdmin.dept, dateTime);
             try
             {
                 SqlDataReader objReader = SQLHelper.GetReader(sql);
                 if (objReader.Read())
                 {
                     objAdmin.id = Convert.ToInt32(objReader["id"].ToString());
-                    objAdmin.deptid = objReader["deptid"].ToString();
+                    objAdmin.deptid = Convert.ToInt32(objReader["deptid"].ToString());
+                    objAdmin.dept = objReader["dept"].ToString();
+                    objAdmin.userid = objReader["userid"].ToString();
                     objAdmin.username = objReader["username"].ToString();
-                    objAdmin.attendance = bool.Parse(objReader["attendance"].ToString());
-                    objAdmin.overtime = bool.Parse(objReader["overtime"].ToString());
-                    objAdmin.evaluation = bool.Parse(objReader["evaluation"].ToString());
-                    objAdmin.assessment = bool.Parse(objReader["assessment"].ToString());
+                    objAdmin.Attendance = (bool)objReader["Attendance"];
+                    objAdmin.Overtime = (bool)objReader["Overtime"];
+                    objAdmin.Evaluation = (bool)objReader["Evaluation"];
+                    objAdmin.Assessment = (bool)objReader["Assessment"];
+                    objAdmin.开始日期 = (DateTime)objReader["开始日期"];
+                    objAdmin.结束日期 = (DateTime)objReader["结束日期"];
+                    objAdmin.备注 = objReader["备注"].ToString();
+                    objAdmin.更改者 = objReader["更改者"].ToString();
+                    objAdmin.更改日期 = (DateTime)objReader["更改日期"];
                 }
                 else
                 {
@@ -61,10 +66,10 @@ namespace DAL
         /// <param name="loginId"></param>
         /// <param name="newPwd"></param>
         /// <returns></returns>
-        public int ModifyPwd(String newPwd, string loginId)
+        public int ModifyPwd(string newPwd, string loginId, string userName, DateTime dateTime)
         {
-            string sql = "update tbl_user set pwd = '{0}' where userid = '{1}'";
-            sql = string.Format(sql, newPwd, loginId);
+            string sql = "update tbl_user set pwd = '{0}',更改者 = '{1}',更改日期 = '{2}' where userid = '{3}'";
+            sql = string.Format(sql, newPwd, userName, dateTime, loginId);
             return SQLHelper.Update(sql);
         }
 
@@ -77,9 +82,8 @@ namespace DAL
         /// <returns></returns>
         public List<Admin> GetAllDepts()
         {
-            string sql = "select distinct deptid,org_dept.机构简称 as dept,org_dept.排序 from tbl_user";
-            sql += " inner join org_dept on tbl_user.deptid = org_dept.机构编号";
-            sql += " order by 排序";
+            string sql = "select distinct deptid,dept from tbl_user";
+            sql += " order by deptid";
 
             SqlDataReader objReader = SQLHelper.GetReader(sql);
             List<Admin> list = new List<Admin>();
@@ -88,7 +92,7 @@ namespace DAL
                 list.Add(new Admin()
                 {
                     dept = objReader["dept"].ToString(),
-                    deptid = objReader["deptid"].ToString()
+                    deptid = (int)objReader["deptid"]
                 });
             }
             objReader.Close();

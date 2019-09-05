@@ -50,25 +50,29 @@ namespace DDRS
                 MessageBox.Show("密码长度必须在6-18位之间！", "提示");
                 this.txtNewPwd.Focus();
                 this.txtNewPwd.SelectAll();
+                return;
             }
-
             if (this.txtNewPwd.Text.Trim() != this.txtNewPwdConfirm.Text.Trim())
             {
                 MessageBox.Show("两次输入的密码不一致！", "提示");
                 this.txtNewPwd.Focus();
                 return;
             }
+            if (this.txtNewPwd.Text.Trim() == this.txtOldPwd.Text.Trim())
+            {
+                MessageBox.Show("新密码和原密码不能为同一密码！", "提示");
+                this.txtNewPwd.Focus();
+                return;
+            }
 
             //将新密码提交到数据库
-            int result = objAdminService.ModifyPwd(Program.currentAdmin.userid, this.txtNewPwd.Text.Trim());
+            int result = objAdminService.ModifyPwd(this.txtNewPwd.Text.Trim(), Program.currentAdmin.userid, Program.currentAdmin.username, DateTime.Now);
             if (result >= 1)
             {
                 MessageBox.Show("新密码修改成功，请妥善保存！", "提示");
                 Program.currentAdmin.pwd = this.txtNewPwdConfirm.Text.Trim();
                 this.Close();
             }
-
-
 
 
 

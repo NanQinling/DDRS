@@ -425,10 +425,10 @@ namespace DAL
 
                     // 二级标题赋值：
                     row = sheet.CreateRow(count + 2);
-                    row.CreateCell(0).SetCellValue($"部门：{data.Rows[i]["部门"].ToString()}");
+                    row.CreateCell(0).SetCellValue($"部门（盖章）：{data.Rows[i]["部门"].ToString()}");
                     row.GetCell(0).CellStyle = style2;
-                    row.CreateCell(4).SetCellValue($"班组：{data.Rows[i]["班组"].ToString()}");
-                    row.GetCell(4).CellStyle = style2;
+                    row.CreateCell(6).SetCellValue($"班组：{data.Rows[i]["班组"].ToString()}");
+                    row.GetCell(6).CellStyle = style2;
                     row.CreateCell(data.Columns.Count - 3 - yincanglie).SetCellValue($"考勤年月：{data.Rows[i]["考勤年月"].ToString().Substring(0, 4)}年{data.Rows[i]["考勤年月"].ToString().Substring(4, 2)}月");
                     row.GetCell(data.Columns.Count - 3 - yincanglie).CellStyle = style2;
 
@@ -687,7 +687,7 @@ namespace DAL
 
 
                     row = sheet.CreateRow(count + 2);
-                    row.CreateCell(0).SetCellValue($"部门：{data.Rows[i]["部门"].ToString()}");
+                    row.CreateCell(0).SetCellValue($"部门（盖章）：{data.Rows[i]["部门"].ToString()}");
                     row.GetCell(0).CellStyle = style2;
                     row.CreateCell(data.Columns.Count - 2 - yincanglie).SetCellValue($"考勤年月：{data.Rows[i]["考勤年月"].ToString().Substring(0, 4)}年{data.Rows[i]["考勤年月"].ToString().Substring(4, 2)}月");
                     row.GetCell(data.Columns.Count - 2 - yincanglie).CellStyle = style2;

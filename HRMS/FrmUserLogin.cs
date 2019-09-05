@@ -23,16 +23,18 @@ namespace DDRS
             this.cboDept.DataSource = objAdminService.GetAllDepts();
             this.cboDept.DisplayMember = "dept";
             this.cboDept.ValueMember = "deptid";
-            this.cboDept.SelectedIndex = 2;//默认选中
+            this.cboDept.SelectedIndex = 1;//默认选中
 
-            this.txtLoginId.Text = "80118777";
-            this.txtLoginPwd.Text = "1";
+            //this.txtLoginId.Text = "80118777";
+            //this.txtLoginPwd.Text = "1";
 
             Program.salaryDate = objMyDateService.GetDate(new MyDate()); //初始化工资日期
 
             //获取程序发布版本号，并赋值给全局变量
-            //ApplicationDeployment ad = ApplicationDeployment.CurrentDeployment;
-            //Program.version = ad.CurrentVersion.ToString();
+            ApplicationDeployment ad = ApplicationDeployment.CurrentDeployment;
+            Program.version = ad.CurrentVersion.ToString();
+            this.Text = this.Text + "               版本号：" + Program.version;
+
 
         }
 
@@ -68,7 +70,7 @@ namespace DDRS
             try
             {
                 //提交用户信息
-                objAdmin = objAdminService.AdminLogin(objAdmin);
+                objAdmin = objAdminService.AdminLogin(objAdmin, Program.salaryDate.loginDate);
                 if (objAdmin == null)
                 {
                     MessageBox.Show("登录账号或密码错误！", "提示");
@@ -76,8 +78,17 @@ namespace DDRS
                 else
                 {
                     Program.currentAdmin = objAdmin; //保存用户对象
-                    this.DialogResult = DialogResult.OK;//设置登录成功信息提示
-                    this.Close();
+
+                    if (objAdmin.pwd == "SAP123")
+                    {
+                        FrmModifyPwd objModyfyPwd = new FrmModifyPwd();
+                        objModyfyPwd.ShowDialog();
+                    }
+                    else
+                    {
+                        this.DialogResult = DialogResult.OK;//设置登录成功信息提示
+                        this.Close();
+                    }
                 }
             }
             catch (Exception ex)

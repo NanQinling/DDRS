@@ -35,6 +35,8 @@ namespace Models
         public string 班组 { get; set; }
         public string 更改者 { get; set; }
         public DateTime 更改日期 { get; set; }
+        public bool IsSubmit { get; set; }
+
 
     }
 }

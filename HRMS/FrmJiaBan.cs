@@ -167,7 +167,7 @@ namespace DDRS
                 this.txtMoney.Focus();
                 return;
             }
-            if (this.txtBeiZhu.Text.Trim().Length > 20)
+            if (this.txtBeiZhu.Text.Trim().Length > 30)
             {
                 MessageBox.Show("备注信息不能超过20个字符，请修改后重新提交！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.txtBeiZhu.Focus();
