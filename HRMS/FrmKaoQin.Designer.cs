@@ -90,11 +90,18 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnMoveSave = new System.Windows.Forms.Button();
+            this.btnMoveBott = new System.Windows.Forms.Button();
+            this.btnMoveTop = new System.Windows.Forms.Button();
+            this.btnMoveDown = new System.Windows.Forms.Button();
+            this.btnMoveUp = new System.Windows.Forms.Button();
             this.btnNotSubmit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKaoQin)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.gbKaoQin.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvKaoQin
@@ -301,7 +308,7 @@
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(113, 12);
             this.label19.TabIndex = 49;
-            this.label19.Text = "夜间值班调休次数：";
+            this.label19.Text = "后夜班调休次数：";
             // 
             // txtYeJianZhiBanCiShu
             // 
@@ -317,7 +324,7 @@
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(89, 12);
             this.label20.TabIndex = 47;
-            this.label20.Text = "夜间值班次数：";
+            this.label20.Text = "后夜班次数：";
             // 
             // txtXiuXiRiChuChai
             // 
@@ -381,12 +388,14 @@
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(101, 12);
             this.label14.TabIndex = 39;
-            this.label14.Text = "工作日加班次数：";
+            this.label14.Text = "前夜班次数：";
             // 
             // txtQueKaCiShu
             // 
+            this.txtQueKaCiShu.BackColor = System.Drawing.SystemColors.Info;
             this.txtQueKaCiShu.Location = new System.Drawing.Point(267, 136);
             this.txtQueKaCiShu.Name = "txtQueKaCiShu";
+            this.txtQueKaCiShu.ReadOnly = true;
             this.txtQueKaCiShu.Size = new System.Drawing.Size(72, 21);
             this.txtQueKaCiShu.TabIndex = 36;
             // 
@@ -401,8 +410,10 @@
             // 
             // txtChiDaoZaoTuiCiShu
             // 
+            this.txtChiDaoZaoTuiCiShu.BackColor = System.Drawing.SystemColors.Info;
             this.txtChiDaoZaoTuiCiShu.Location = new System.Drawing.Point(96, 136);
             this.txtChiDaoZaoTuiCiShu.Name = "txtChiDaoZaoTuiCiShu";
+            this.txtChiDaoZaoTuiCiShu.ReadOnly = true;
             this.txtChiDaoZaoTuiCiShu.Size = new System.Drawing.Size(72, 21);
             this.txtChiDaoZaoTuiCiShu.TabIndex = 34;
             // 
@@ -417,8 +428,10 @@
             // 
             // txtSangJia
             // 
+            this.txtSangJia.BackColor = System.Drawing.SystemColors.Info;
             this.txtSangJia.Location = new System.Drawing.Point(688, 107);
             this.txtSangJia.Name = "txtSangJia";
+            this.txtSangJia.ReadOnly = true;
             this.txtSangJia.Size = new System.Drawing.Size(72, 21);
             this.txtSangJia.TabIndex = 32;
             // 
@@ -433,8 +446,10 @@
             // 
             // txtHunJian
             // 
+            this.txtHunJian.BackColor = System.Drawing.SystemColors.Info;
             this.txtHunJian.Location = new System.Drawing.Point(469, 107);
             this.txtHunJian.Name = "txtHunJian";
+            this.txtHunJian.ReadOnly = true;
             this.txtHunJian.Size = new System.Drawing.Size(72, 21);
             this.txtHunJian.TabIndex = 30;
             // 
@@ -449,8 +464,10 @@
             // 
             // txtPeiChanJia
             // 
+            this.txtPeiChanJia.BackColor = System.Drawing.SystemColors.Info;
             this.txtPeiChanJia.Location = new System.Drawing.Point(267, 107);
             this.txtPeiChanJia.Name = "txtPeiChanJia";
+            this.txtPeiChanJia.ReadOnly = true;
             this.txtPeiChanJia.Size = new System.Drawing.Size(72, 21);
             this.txtPeiChanJia.TabIndex = 28;
             // 
@@ -465,8 +482,10 @@
             // 
             // txtChanJia
             // 
+            this.txtChanJia.BackColor = System.Drawing.SystemColors.Info;
             this.txtChanJia.Location = new System.Drawing.Point(96, 107);
             this.txtChanJia.Name = "txtChanJia";
+            this.txtChanJia.ReadOnly = true;
             this.txtChanJia.Size = new System.Drawing.Size(72, 21);
             this.txtChanJia.TabIndex = 26;
             // 
@@ -497,8 +516,10 @@
             // 
             // txtBingJia
             // 
+            this.txtBingJia.BackColor = System.Drawing.SystemColors.Info;
             this.txtBingJia.Location = new System.Drawing.Point(469, 78);
             this.txtBingJia.Name = "txtBingJia";
+            this.txtBingJia.ReadOnly = true;
             this.txtBingJia.Size = new System.Drawing.Size(72, 21);
             this.txtBingJia.TabIndex = 22;
             // 
@@ -513,8 +534,10 @@
             // 
             // txtShiJia
             // 
+            this.txtShiJia.BackColor = System.Drawing.SystemColors.Info;
             this.txtShiJia.Location = new System.Drawing.Point(267, 78);
             this.txtShiJia.Name = "txtShiJia";
+            this.txtShiJia.ReadOnly = true;
             this.txtShiJia.Size = new System.Drawing.Size(72, 21);
             this.txtShiJia.TabIndex = 20;
             // 
@@ -529,8 +552,10 @@
             // 
             // txtNianJia
             // 
+            this.txtNianJia.BackColor = System.Drawing.SystemColors.Info;
             this.txtNianJia.Location = new System.Drawing.Point(96, 78);
             this.txtNianJia.Name = "txtNianJia";
+            this.txtNianJia.ReadOnly = true;
             this.txtNianJia.Size = new System.Drawing.Size(72, 21);
             this.txtNianJia.TabIndex = 18;
             // 
@@ -656,7 +681,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(595, 23);
+            this.btnSave.Location = new System.Drawing.Point(623, 23);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 18;
@@ -670,6 +695,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.btnNotSubmit);
             this.panel1.Controls.Add(this.dgvKaoQin);
             this.panel1.Controls.Add(this.btnClose);
@@ -682,13 +708,77 @@
             this.panel1.Size = new System.Drawing.Size(800, 510);
             this.panel1.TabIndex = 23;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btnMoveSave);
+            this.groupBox2.Controls.Add(this.btnMoveBott);
+            this.groupBox2.Controls.Add(this.btnMoveTop);
+            this.groupBox2.Controls.Add(this.btnMoveDown);
+            this.groupBox2.Controls.Add(this.btnMoveUp);
+            this.groupBox2.Location = new System.Drawing.Point(190, 9);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(244, 46);
+            this.groupBox2.TabIndex = 24;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "排序";
+            // 
+            // btnMoveSave
+            // 
+            this.btnMoveSave.Location = new System.Drawing.Point(172, 19);
+            this.btnMoveSave.Name = "btnMoveSave";
+            this.btnMoveSave.Size = new System.Drawing.Size(67, 23);
+            this.btnMoveSave.TabIndex = 33;
+            this.btnMoveSave.Text = "保存顺序";
+            this.btnMoveSave.UseVisualStyleBackColor = true;
+            this.btnMoveSave.Click += new System.EventHandler(this.BtnMoveSave_Click);
+            // 
+            // btnMoveBott
+            // 
+            this.btnMoveBott.Location = new System.Drawing.Point(131, 19);
+            this.btnMoveBott.Name = "btnMoveBott";
+            this.btnMoveBott.Size = new System.Drawing.Size(40, 23);
+            this.btnMoveBott.TabIndex = 32;
+            this.btnMoveBott.Text = "置尾";
+            this.btnMoveBott.UseVisualStyleBackColor = true;
+            this.btnMoveBott.Click += new System.EventHandler(this.BtnMoveBott_Click);
+            // 
+            // btnMoveTop
+            // 
+            this.btnMoveTop.Location = new System.Drawing.Point(8, 18);
+            this.btnMoveTop.Name = "btnMoveTop";
+            this.btnMoveTop.Size = new System.Drawing.Size(40, 23);
+            this.btnMoveTop.TabIndex = 31;
+            this.btnMoveTop.Text = "置顶";
+            this.btnMoveTop.UseVisualStyleBackColor = true;
+            this.btnMoveTop.Click += new System.EventHandler(this.BtnMoveTop_Click);
+            // 
+            // btnMoveDown
+            // 
+            this.btnMoveDown.Location = new System.Drawing.Point(90, 19);
+            this.btnMoveDown.Name = "btnMoveDown";
+            this.btnMoveDown.Size = new System.Drawing.Size(40, 23);
+            this.btnMoveDown.TabIndex = 30;
+            this.btnMoveDown.Text = "下移";
+            this.btnMoveDown.UseVisualStyleBackColor = true;
+            this.btnMoveDown.Click += new System.EventHandler(this.BtnMoveDown_Click);
+            // 
+            // btnMoveUp
+            // 
+            this.btnMoveUp.Location = new System.Drawing.Point(49, 18);
+            this.btnMoveUp.Name = "btnMoveUp";
+            this.btnMoveUp.Size = new System.Drawing.Size(40, 23);
+            this.btnMoveUp.TabIndex = 29;
+            this.btnMoveUp.Text = "上移";
+            this.btnMoveUp.UseVisualStyleBackColor = true;
+            this.btnMoveUp.Click += new System.EventHandler(this.BtnMoveUp_Click);
+            // 
             // btnNotSubmit
             // 
-            this.btnNotSubmit.Location = new System.Drawing.Point(486, 23);
+            this.btnNotSubmit.Location = new System.Drawing.Point(542, 23);
             this.btnNotSubmit.Name = "btnNotSubmit";
             this.btnNotSubmit.Size = new System.Drawing.Size(75, 23);
             this.btnNotSubmit.TabIndex = 23;
-            this.btnNotSubmit.Text = "未上报人员";
+            this.btnNotSubmit.Text = "未报送人员";
             this.btnNotSubmit.UseVisualStyleBackColor = true;
             this.btnNotSubmit.Click += new System.EventHandler(this.BtnNotSubmit_Click);
             // 
@@ -710,6 +800,7 @@
             this.gbKaoQin.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -778,5 +869,11 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnNotSubmit;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnMoveSave;
+        private System.Windows.Forms.Button btnMoveBott;
+        private System.Windows.Forms.Button btnMoveTop;
+        private System.Windows.Forms.Button btnMoveDown;
+        private System.Windows.Forms.Button btnMoveUp;
     }
 }

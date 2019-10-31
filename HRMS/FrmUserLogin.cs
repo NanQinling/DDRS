@@ -3,14 +3,15 @@ using Models;
 using System;
 using System.Deployment.Application;
 using System.Windows.Forms;
-
+using System.Net;
 
 namespace DDRS
 {
     public partial class FrmUserLogin : Form
     {
-        private AdminService objAdminService = new AdminService();//创建数据访问类对象
+        private AdminService objAdminService = new DAL.AdminService();//创建数据访问类对象
         private MyDateService objMyDateService = new DAL.MyDateService();//创建数据访问类对象
+        private LoginLogService objLoginLogService = new DAL.LoginLogService();//创建数据访问类对象
 
 
         public FrmUserLogin()
@@ -30,10 +31,10 @@ namespace DDRS
 
             Program.salaryDate = objMyDateService.GetDate(new MyDate()); //初始化工资日期
 
-            //获取程序发布版本号，并赋值给全局变量
-            ApplicationDeployment ad = ApplicationDeployment.CurrentDeployment;
-            Program.version = ad.CurrentVersion.ToString();
-            this.Text = this.Text + "               版本号：" + Program.version;
+            ////获取程序发布版本号，并赋值给全局变量
+            //ApplicationDeployment ad = ApplicationDeployment.CurrentDeployment;
+            //Program.version = ad.CurrentVersion.ToString();
+            //this.Text = this.Text + "               版本号：" + Program.version;
 
 
         }
@@ -77,8 +78,10 @@ namespace DDRS
                 }
                 else
                 {
+                    //（1）保存用户信息到全局变量
                     Program.currentAdmin = objAdmin; //保存用户对象
 
+                    //（2）提示用户变更初始密码
                     if (objAdmin.pwd == "SAP123")
                     {
                         FrmModifyPwd objModyfyPwd = new FrmModifyPwd();
@@ -86,6 +89,20 @@ namespace DDRS
                     }
                     else
                     {
+                        //（2）将用户登录信息写入日志
+                        LoginLog objLoginLog = new LoginLog()  //初始化登录对象
+                        {
+                            LoginId = Convert.ToInt32(objAdmin.userid),
+                            SPName = objAdmin.username,
+                            ServerName = Dns.GetHostName(),
+                            LoginAddr = objLoginLogService.GetLocalIp(true),
+                            LoginDept = objAdmin.dept,
+
+                        };
+                        Program.currentLoginLog = objLoginLog; //保存登录用户对象
+                        Program.currentLoginLog.LoginLogId = objLoginLogService.WriteLoginLog(objLoginLog); //将登录用户对象写入日志
+
+                        //（3）设置登录窗体返回值
                         this.DialogResult = DialogResult.OK;//设置登录成功信息提示
                         this.Close();
                     }

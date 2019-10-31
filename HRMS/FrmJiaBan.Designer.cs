@@ -126,7 +126,7 @@
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(113, 12);
             this.label19.TabIndex = 55;
-            this.label19.Text = "夜间值班调休次数：";
+            this.label19.Text = "后夜班调休次数：";
             // 
             // txtYeJianZhiBanCiShu
             // 
@@ -142,7 +142,7 @@
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(89, 12);
             this.label20.TabIndex = 53;
-            this.label20.Text = "夜间值班次数：";
+            this.label20.Text = "后夜班次数：";
             // 
             // txtZhengChangTiaoXiu
             // 
@@ -206,7 +206,7 @@
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(101, 12);
             this.label14.TabIndex = 45;
-            this.label14.Text = "工作日加班次数：";
+            this.label14.Text = "前夜班次数：";
             // 
             // txtBuMen
             // 

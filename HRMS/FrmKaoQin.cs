@@ -10,6 +10,7 @@ namespace DDRS
     public partial class FrmKaoQin : Form
     {
         private KaoQinService objKaoQinService = new DAL.KaoQinService();//创建数据访问类对象
+        private MoveItemService objMoveItemService = new DAL.MoveItemService();
 
         /// <summary>
         /// 加班表格初始化
@@ -32,6 +33,7 @@ namespace DDRS
             this.dgvKaoQin.ReadOnly = true;
             this.dgvKaoQin.MultiSelect = false;
             this.dgvKaoQin.Columns[3].Frozen = true;
+            this.dgvKaoQin.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             //禁止 DataGridView 点击 列标题 排序
             for (int i = 0; i < this.dgvKaoQin.Columns.Count; i++)
@@ -115,12 +117,12 @@ namespace DDRS
                 丧假 = double.Parse(this.txtSangJia.Text),
                 迟到早退次数 = double.Parse(this.txtChiDaoZaoTuiCiShu.Text),
                 缺卡次数 = double.Parse(this.txtQueKaCiShu.Text),
-                工作日加班次数 = double.Parse(this.txtGongZuoRiJiaBanCiShu.Text),
+                前夜班次数 = double.Parse(this.txtGongZuoRiJiaBanCiShu.Text),
                 休息日加班 = double.Parse(this.txtXiuXiRiJiaBan.Text),
                 节假日加班 = double.Parse(this.txtJieJiaRiJiaBan.Text),
                 休息日出差 = double.Parse(this.txtXiuXiRiChuChai.Text),
-                夜间值班次数 = double.Parse(this.txtYeJianZhiBanCiShu.Text),
-                夜间值班调休次数 = double.Parse(this.txtYeJianZhiBanTiaoXiuCiShu.Text),
+                后夜班次数 = double.Parse(this.txtYeJianZhiBanCiShu.Text),
+                后夜班调休次数 = double.Parse(this.txtYeJianZhiBanTiaoXiuCiShu.Text),
                 打卡签到次数 = double.Parse(this.txtDaKaQianDaoCiShu.Text),
                 工作时长 = double.Parse(this.txtGongZuoShiChang.Text),
                 备注 = this.txtBeiZhu.Text.Trim(),
@@ -241,7 +243,7 @@ namespace DDRS
             }
             if (this.txtGongZuoRiJiaBanCiShu.Text.Trim().Length == 0)
             {
-                MessageBox.Show("请填入工作日加班次数！", "提示");
+                MessageBox.Show("请填入前夜班次数！", "提示");
                 return;
             }
             if (this.txtXiuXiRiChuChai.Text.Trim().Length == 0)
@@ -261,12 +263,12 @@ namespace DDRS
             }
             if (this.txtYeJianZhiBanCiShu.Text.Trim().Length == 0)
             {
-                MessageBox.Show("请填入夜间值班次数！", "提示");
+                MessageBox.Show("请填入后夜班次数！", "提示");
                 return;
             }
             if (this.txtYeJianZhiBanTiaoXiuCiShu.Text.Trim().Length == 0)
             {
-                MessageBox.Show("请填入夜间值班调休次数！", "提示");
+                MessageBox.Show("请填入后夜班调休次数！", "提示");
                 return;
             }
             if (this.txtDaKaQianDaoCiShu.Text.Trim().Length == 0)
@@ -281,7 +283,7 @@ namespace DDRS
             }
             if (this.txtBeiZhu.Text.Trim().Length > 30)
             {
-                MessageBox.Show("备注信息不能超过20个字符，请修改后重新提交！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("备注信息不能超过30个字符，请修改后重新提交！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.txtBeiZhu.Focus();
                 return;
             }
@@ -305,7 +307,7 @@ namespace DDRS
             #region 修改对象
             try
             {
-                if (objKaoQinService.ModifyKaoQin(objKaoQin) == 1)
+                if (objKaoQinService.ModifyKaoQin(objKaoQin, Program.currentAdmin.dept) == 1)
                 {
                     MessageBox.Show("修改成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     init_dgvKaoQin();
@@ -328,6 +330,10 @@ namespace DDRS
 
         private void dgvKaoQin_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (this.dgvKaoQin.SelectedRows.Count == 0)
+            {
+                return;
+            }
             #region 点击表格中的一行时，把内容送到编辑区
             string userid = this.dgvKaoQin.CurrentRow.Cells["人员编号"].Value.ToString();
             KaoQin objKaoQin = objKaoQinService.GetKaoQinByUserId(Program.salaryDate.last_year_month, userid);
@@ -349,12 +355,12 @@ namespace DDRS
             this.txtSangJia.Text = objKaoQin.丧假.ToString();
             this.txtChiDaoZaoTuiCiShu.Text = objKaoQin.迟到早退次数.ToString();
             this.txtQueKaCiShu.Text = objKaoQin.缺卡次数.ToString();
-            this.txtGongZuoRiJiaBanCiShu.Text = objKaoQin.工作日加班次数.ToString();
+            this.txtGongZuoRiJiaBanCiShu.Text = objKaoQin.前夜班次数.ToString();
             this.txtXiuXiRiJiaBan.Text = objKaoQin.休息日加班.ToString();
             this.txtJieJiaRiJiaBan.Text = objKaoQin.节假日加班.ToString();
             this.txtXiuXiRiChuChai.Text = objKaoQin.休息日出差.ToString();
-            this.txtYeJianZhiBanCiShu.Text = objKaoQin.夜间值班次数.ToString();
-            this.txtYeJianZhiBanTiaoXiuCiShu.Text = objKaoQin.夜间值班调休次数.ToString();
+            this.txtYeJianZhiBanCiShu.Text = objKaoQin.后夜班次数.ToString();
+            this.txtYeJianZhiBanTiaoXiuCiShu.Text = objKaoQin.后夜班调休次数.ToString();
             this.txtDaKaQianDaoCiShu.Text = objKaoQin.打卡签到次数.ToString();
             this.txtGongZuoShiChang.Text = objKaoQin.工作时长.ToString();
             this.txtBeiZhu.Text = objKaoQin.备注.ToString();
@@ -381,8 +387,42 @@ namespace DDRS
 
         private void BtnNotSubmit_Click(object sender, EventArgs e)
         {
-            List<KaoQin> list = objKaoQinService.GetNotSubmitKaoQin(Program.salaryDate.last_year_month, Program.currentAdmin.dept);
+            List<KaoQin> list = objKaoQinService.GetNotSubmitKaoQinRenYuan(Program.salaryDate.last_year_month, Program.currentAdmin.dept);
             SetDgvKaoQinFormat(list);
+        }
+
+        private void BtnMoveTop_Click(object sender, EventArgs e)
+        {
+            objMoveItemService.MoveDataGridViewX(dgvKaoQin, -2);
+        }
+
+        private void BtnMoveUp_Click(object sender, EventArgs e)
+        {
+            objMoveItemService.MoveDataGridViewX(dgvKaoQin, -1);
+
+        }
+
+        private void BtnMoveDown_Click(object sender, EventArgs e)
+        {
+            objMoveItemService.MoveDataGridViewX(dgvKaoQin, 1);
+        }
+
+        private void BtnMoveBott_Click(object sender, EventArgs e)
+        {
+            objMoveItemService.MoveDataGridViewX(dgvKaoQin, 2);
+        }
+
+        private void BtnMoveSave_Click(object sender, EventArgs e)
+        {
+            List<KaoQin> list = new List<KaoQin>();
+            list = (List<KaoQin>)dgvKaoQin.DataSource;
+
+            foreach (var item in list)
+            {
+                item.排序 = list.IndexOf(item);
+                objMoveItemService.ModifySortID("imp_attendance", "排序", item.排序, "id", item.id.ToString());
+            }
+            MessageBox.Show("保存成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.None);
         }
     }
 }

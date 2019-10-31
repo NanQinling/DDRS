@@ -22,12 +22,15 @@ namespace Models
         public double 丧假 { get; set; }
         public double 迟到早退次数 { get; set; }
         public double 缺卡次数 { get; set; }
-        public double 工作日加班次数 { get; set; }
+        //public double 前夜班次数 { get; set; }
+        public double 前夜班次数 { get; set; }
         public double 休息日加班 { get; set; }
         public double 节假日加班 { get; set; }
         public double 休息日出差 { get; set; }
-        public double 夜间值班次数 { get; set; }
-        public double 夜间值班调休次数 { get; set; }
+        //public double 后夜班次数 { get; set; }
+        //public double 后夜班调休次数 { get; set; }
+        public double 后夜班次数 { get; set; }
+        public double 后夜班调休次数 { get; set; }
         public double 打卡签到次数 { get; set; }
         public double 工作时长 { get; set; }
         public string 备注 { get; set; }
@@ -36,7 +39,7 @@ namespace Models
         public string 更改者 { get; set; }
         public DateTime 更改日期 { get; set; }
         public bool IsSubmit { get; set; }
-
+        public int 排序 { get; set; }
 
     }
 }

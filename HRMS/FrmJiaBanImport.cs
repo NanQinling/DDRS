@@ -176,7 +176,7 @@ namespace DDRS
                 {
                     if (item.金额 > 0)
                     {
-                        if (objJiaBanService.ModifyJiaBan(item) == 1)
+                        if (objJiaBanService.ModifyJiaBan(item, Program.currentAdmin.dept) == 1)
                         {
                             importCount++;
                         }

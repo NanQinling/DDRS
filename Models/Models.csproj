@@ -41,7 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin.cs" />
+    <Compile Include="KaoPing.cs" />
     <Compile Include="KaoQin.cs" />
+    <Compile Include="LoginLog.cs" />
     <Compile Include="MyDate.cs" />
     <Compile Include="JiaBan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

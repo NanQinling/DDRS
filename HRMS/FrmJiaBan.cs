@@ -22,6 +22,7 @@ namespace DDRS
             this.dgvJiaBan.ReadOnly = true;
             this.dgvJiaBan.MultiSelect = false;
             this.dgvJiaBan.Columns[3].Frozen = true;
+            this.dgvJiaBan.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
 
             //禁止 DataGridView 点击 列标题 排序
@@ -94,12 +95,12 @@ namespace DDRS
                 部门 = Program.currentAdmin.dept,
                 人员编号 = this.txtHnbh.Text.Trim(),
                 姓名 = this.txtName.Text.Trim(),
-                工作日加班次数 = double.Parse(this.txtGongZuoRiJiaBanCiShu.Text),
+                前夜班次数 = double.Parse(this.txtGongZuoRiJiaBanCiShu.Text),
                 休息日加班 = double.Parse(this.txtXiuXiRiJiaBan.Text),
                 节假日加班 = double.Parse(this.txtJieJiaRiJiaBan.Text),
                 正常调休 = double.Parse(this.txtZhengChangTiaoXiu.Text),
-                夜间值班次数 = double.Parse(this.txtYeJianZhiBanCiShu.Text),
-                夜间值班调休次数 = double.Parse(this.txtYeJianZhiBanTiaoXiuCiShu.Text),
+                后夜班次数 = double.Parse(this.txtYeJianZhiBanCiShu.Text),
+                后夜班调休次数 = double.Parse(this.txtYeJianZhiBanTiaoXiuCiShu.Text),
                 金额 = double.Parse(this.txtMoney.Text),
                 备注 = this.txtBeiZhu.Text.Trim(),
                 更改者 = Program.currentAdmin.username,
@@ -127,7 +128,7 @@ namespace DDRS
             double number;
             if (double.TryParse(this.txtGongZuoRiJiaBanCiShu.Text.Trim(), out number) == false)
             {
-                MessageBox.Show("【工作日加班次数】数据格式有误，请修改后重新提交！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("【前夜班次数】数据格式有误，请修改后重新提交！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.txtGongZuoRiJiaBanCiShu.Focus();
                 return;
             }
@@ -151,13 +152,13 @@ namespace DDRS
             }
             if (double.TryParse(this.txtYeJianZhiBanCiShu.Text.Trim(), out number) == false)
             {
-                MessageBox.Show("【夜间值班次数】数据格式有误，请修改后重新提交！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("【后夜班次数】数据格式有误，请修改后重新提交！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.txtYeJianZhiBanCiShu.Focus();
                 return;
             }
             if (double.TryParse(this.txtYeJianZhiBanTiaoXiuCiShu.Text.Trim(), out number) == false)
             {
-                MessageBox.Show("【夜间值班调休次数】数据格式有误，请修改后重新提交！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("【后夜班调休次数】数据格式有误，请修改后重新提交！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.txtYeJianZhiBanTiaoXiuCiShu.Focus();
                 return;
             }
@@ -197,7 +198,7 @@ namespace DDRS
             {
                 if (objJiaBan.金额 > 0)
                 {
-                    if (objJiaBanService.ModifyJiaBan(objJiaBan) == 1)
+                    if (objJiaBanService.ModifyJiaBan(objJiaBan, Program.currentAdmin.dept) == 1)
                     {
                         MessageBox.Show("修改成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         init_dgvJiaBan();
@@ -225,6 +226,10 @@ namespace DDRS
 
         private void dgvJiaBan_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (this.dgvJiaBan.SelectedRows.Count == 0)
+            {
+                return;
+            }
             #region 点选表格中的一行时，把内容送到编辑区
             string userid = this.dgvJiaBan.CurrentRow.Cells["人员编号"].Value.ToString();
             JiaBan objJiaBan = objJiaBanService.GetJiaBanByUserId(Program.salaryDate.last_year_month, userid); //查询创建对象
@@ -232,12 +237,12 @@ namespace DDRS
             this.txtBuMen.Text = objJiaBan.考勤年月.ToString();
             this.txtHnbh.Text = objJiaBan.人员编号.ToString();
             this.txtName.Text = objJiaBan.姓名.ToString();
-            this.txtGongZuoRiJiaBanCiShu.Text = objJiaBan.工作日加班次数.ToString();
+            this.txtGongZuoRiJiaBanCiShu.Text = objJiaBan.前夜班次数.ToString();
             this.txtXiuXiRiJiaBan.Text = objJiaBan.休息日加班.ToString();
             this.txtJieJiaRiJiaBan.Text = objJiaBan.节假日加班.ToString();
             this.txtZhengChangTiaoXiu.Text = objJiaBan.正常调休.ToString();
-            this.txtYeJianZhiBanCiShu.Text = objJiaBan.夜间值班次数.ToString();
-            this.txtYeJianZhiBanTiaoXiuCiShu.Text = objJiaBan.夜间值班调休次数.ToString();
+            this.txtYeJianZhiBanCiShu.Text = objJiaBan.后夜班次数.ToString();
+            this.txtYeJianZhiBanTiaoXiuCiShu.Text = objJiaBan.后夜班调休次数.ToString();
             this.txtMoney.Text = objJiaBan.金额.ToString();
             this.txtBeiZhu.Text = objJiaBan.备注.ToString();
             #endregion

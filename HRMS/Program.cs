@@ -32,6 +32,8 @@ namespace DDRS
 
         //定义一个全局变量
         public static Admin currentAdmin = null;
+        //定义一个全局变量
+        public static LoginLog currentLoginLog = null;
         //定义一个日期全局变量
         public static MyDate salaryDate = null;
         //定义一个版本全局变量

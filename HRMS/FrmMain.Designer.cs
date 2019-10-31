@@ -43,7 +43,10 @@
             this.tsmiManageJiaBan = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiImportJiaBan = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiExportPrintJiaBan = new System.Windows.Forms.ToolStripMenuItem();
-            this.panelForm = new System.Windows.Forms.Panel();
+            this.员工考评管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.维护考评数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.批量导入考评数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.导出并打印ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -59,6 +62,7 @@
             this.toolStripStatusLabel12 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel10 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel13 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.panelForm = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -69,7 +73,6 @@
             this.tsmiManageKaoQin,
             this.tsmiImportAttendance,
             this.tsmiExportPrintKaoQin});
-            this.考勤管理ToolStripMenuItem.Enabled = false;
             this.考勤管理ToolStripMenuItem.Name = "考勤管理ToolStripMenuItem";
             this.考勤管理ToolStripMenuItem.Size = new System.Drawing.Size(84, 21);
             this.考勤管理ToolStripMenuItem.Text = "考勤管理(&A)";
@@ -78,7 +81,7 @@
             // 
             this.tsmiManageKaoQin.Name = "tsmiManageKaoQin";
             this.tsmiManageKaoQin.Size = new System.Drawing.Size(184, 22);
-            this.tsmiManageKaoQin.Text = "考勤管理(&M)";
+            this.tsmiManageKaoQin.Text = "维护考勤数据(&M)";
             this.tsmiManageKaoQin.Click += new System.EventHandler(this.tsmiManageKaoQin_Click);
             // 
             // tsmiImportAttendance
@@ -129,7 +132,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.系统ToolStripMenuItem,
             this.考勤管理ToolStripMenuItem,
-            this.加班管理JToolStripMenuItem});
+            this.加班管理JToolStripMenuItem,
+            this.员工考评管理ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(992, 25);
@@ -142,16 +146,15 @@
             this.tsmiManageJiaBan,
             this.tsmiImportJiaBan,
             this.tsmiExportPrintJiaBan});
-            this.加班管理JToolStripMenuItem.Enabled = false;
             this.加班管理JToolStripMenuItem.Name = "加班管理JToolStripMenuItem";
-            this.加班管理JToolStripMenuItem.Size = new System.Drawing.Size(81, 21);
-            this.加班管理JToolStripMenuItem.Text = "加班管理(&J)";
+            this.加班管理JToolStripMenuItem.Size = new System.Drawing.Size(86, 21);
+            this.加班管理JToolStripMenuItem.Text = "加班管理(&O)";
             // 
             // tsmiManageJiaBan
             // 
             this.tsmiManageJiaBan.Name = "tsmiManageJiaBan";
             this.tsmiManageJiaBan.Size = new System.Drawing.Size(184, 22);
-            this.tsmiManageJiaBan.Text = "加班管理(&M)";
+            this.tsmiManageJiaBan.Text = "维护加班数据(&M)";
             this.tsmiManageJiaBan.Click += new System.EventHandler(this.TsmiManageJiaBan_Click);
             // 
             // tsmiImportJiaBan
@@ -168,16 +171,36 @@
             this.tsmiExportPrintJiaBan.Text = "导出并打印(&P)";
             this.tsmiExportPrintJiaBan.Click += new System.EventHandler(this.tsmiExportPrintJiaBan_Click);
             // 
-            // panelForm
+            // 员工考评管理ToolStripMenuItem
             // 
-            this.panelForm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelForm.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panelForm.Location = new System.Drawing.Point(0, 28);
-            this.panelForm.Name = "panelForm";
-            this.panelForm.Size = new System.Drawing.Size(992, 636);
-            this.panelForm.TabIndex = 4;
+            this.员工考评管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.维护考评数据ToolStripMenuItem,
+            this.批量导入考评数据ToolStripMenuItem,
+            this.导出并打印ToolStripMenuItem});
+            this.员工考评管理ToolStripMenuItem.Name = "员工考评管理ToolStripMenuItem";
+            this.员工考评管理ToolStripMenuItem.Size = new System.Drawing.Size(107, 21);
+            this.员工考评管理ToolStripMenuItem.Text = "员工考评管理(&E)";
+            // 
+            // 维护考评数据ToolStripMenuItem
+            // 
+            this.维护考评数据ToolStripMenuItem.Name = "维护考评数据ToolStripMenuItem";
+            this.维护考评数据ToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.维护考评数据ToolStripMenuItem.Text = "维护考评数据(&M)";
+            this.维护考评数据ToolStripMenuItem.Click += new System.EventHandler(this.维护考评数据ToolStripMenuItem_Click);
+            // 
+            // 批量导入考评数据ToolStripMenuItem
+            // 
+            this.批量导入考评数据ToolStripMenuItem.Name = "批量导入考评数据ToolStripMenuItem";
+            this.批量导入考评数据ToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.批量导入考评数据ToolStripMenuItem.Text = "批量导入考评数据(&I)";
+            this.批量导入考评数据ToolStripMenuItem.Click += new System.EventHandler(this.批量导入考评数据ToolStripMenuItem_Click);
+            // 
+            // 导出并打印ToolStripMenuItem
+            // 
+            this.导出并打印ToolStripMenuItem.Name = "导出并打印ToolStripMenuItem";
+            this.导出并打印ToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.导出并打印ToolStripMenuItem.Text = "导出并打印(&P)";
+            this.导出并打印ToolStripMenuItem.Click += new System.EventHandler(this.导出并打印ToolStripMenuItem_Click);
             // 
             // imageList1
             // 
@@ -297,23 +320,34 @@
             // 
             this.toolStripStatusLabel13.Font = new System.Drawing.Font("宋体", 9F);
             this.toolStripStatusLabel13.Name = "toolStripStatusLabel13";
-            this.toolStripStatusLabel13.Size = new System.Drawing.Size(119, 12);
-            this.toolStripStatusLabel13.Text = "Copyright(C) 南秦岭";
+            this.toolStripStatusLabel13.Size = new System.Drawing.Size(107, 12);
+            this.toolStripStatusLabel13.Text = "版权所有： 南秦岭";
+            // 
+            // panelForm
+            // 
+            this.panelForm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelForm.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelForm.Location = new System.Drawing.Point(0, 28);
+            this.panelForm.Name = "panelForm";
+            this.panelForm.Size = new System.Drawing.Size(992, 636);
+            this.panelForm.TabIndex = 15;
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(992, 703);
-            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.panelForm);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "渭南热电公司部门数据上报系统";
+            this.Text = "渭南热电公司人资数据上报系统";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.menuStrip1.ResumeLayout(false);
@@ -338,7 +372,6 @@
         private System.Windows.Forms.ToolStripMenuItem 加班管理JToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsmiManageJiaBan;
         private System.Windows.Forms.ToolStripMenuItem tsmiImportJiaBan;
-        private System.Windows.Forms.Panel panelForm;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
@@ -356,6 +389,11 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiExportPrintKaoQin;
         private System.Windows.Forms.ToolStripMenuItem tsmiExportPrintJiaBan;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.ToolStripMenuItem 员工考评管理ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 维护考评数据ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 批量导入考评数据ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 导出并打印ToolStripMenuItem;
+        private System.Windows.Forms.Panel panelForm;
     }
 }
 

@@ -127,12 +127,13 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(350, 31);
             this.label4.TabIndex = 9;
-            this.label4.Text = "渭南热电公司部门数据上报系统";
+            this.label4.Text = "渭南热电公司人资数据上报系统";
             // 
             // FrmUserLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CancelButton = this.btnQuit;
             this.ClientSize = new System.Drawing.Size(435, 186);
             this.Controls.Add(this.label4);

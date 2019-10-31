@@ -207,7 +207,7 @@ namespace DDRS
                 try
                 {
                     //导入数据
-                    if (objKaoQinService.ModifyKaoQin(item) == 1)
+                    if (objKaoQinService.ModifyKaoQin(item, Program.currentAdmin.dept) == 1)
                     {
                         importCount++;
                     }
